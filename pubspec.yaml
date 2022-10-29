@@ -20,6 +20,7 @@ dependencies:
   equatable: ^2.0.5
   # Remote API
   http: ^0.13.5
+  internet_connection_checker: ^1.0.0+1
   # System
   image_downloader: ^0.31.0
   # Use with the CupertinoIcons class for iOS style icons.
