@@ -1,7 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:vgv_coffee_app/data/datasources/coffee_datasource.dart';
-import 'package:vgv_coffee_app/data/datasources/core/error/exceptions.dart';
+import 'package:vgv_coffee_app/data/datasources/coffee_data_source.dart';
+import 'package:vgv_coffee_app/data/core/error/exceptions.dart';
+import 'package:vgv_coffee_app/data/models/coffee_model.dart';
 import 'package:vgv_coffee_app/domain/core/entities/result.dart';
 import 'package:vgv_coffee_app/domain/core/error/failures.dart';
 import 'package:vgv_coffee_app/domain/entities/coffee.dart';
@@ -30,7 +31,8 @@ void main() {
   group(
     'getRandomCoffee',
     () {
-      const tCoffeeModel = Coffee(url: 'testing.testing');
+      const tCoffeeModel = CoffeeModel(url: 'https://test.test/test.png');
+      const Coffee tCoffee = tCoffeeModel;
 
       group(
         'Online',
@@ -48,7 +50,7 @@ void main() {
                 (_) async => tCoffeeModel,
               );
 
-              await repository.getRandomCoffee();
+              repository.getRandomCoffee();
 
               verify(() => networkInfo.isConnected).called(1);
             },
@@ -66,7 +68,7 @@ void main() {
               verify(() => dataSource.getRandomCoffee()).called(1);
               expect(
                 result,
-                Result<Coffee>.success(tCoffeeModel),
+                Result<Coffee>.success(tCoffee),
               );
             },
           );
