@@ -34,11 +34,9 @@ void main() {
     'get',
     () {
       test(
-        'should perform a HTTP GET request',
+        'Should perform a HTTP GET request',
         () async {
-          when(
-            () => httpClient.get(any()),
-          ).thenAnswer(
+          when(() => httpClient.get(any())).thenAnswer(
             (_) async => http.Response('{}', 200),
           );
 
@@ -53,11 +51,9 @@ void main() {
       );
 
       test(
-        'should return an ApiResponse if the response is successful',
+        'Should return an ApiResponse if the response is successful',
         () async {
-          when(
-            () => httpClient.get(any()),
-          ).thenAnswer(
+          when(() => httpClient.get(any())).thenAnswer(
             (_) async => http.Response('{"$jsonKey": "$jsonValue"}', 200),
           );
 
@@ -71,11 +67,9 @@ void main() {
       );
 
       test(
-        'should throw a ServerException if the request has failed',
+        'Should throw a ServerException if the request has failed',
         () async {
-          when(
-            () => httpClient.get(any()),
-          ).thenAnswer(
+          when(() => httpClient.get(any())).thenAnswer(
             (_) async => http.Response('{}', 404),
           );
 
@@ -89,11 +83,9 @@ void main() {
       );
 
       test(
-        'should throw a ServerException if the request has an unexpected error',
+        'Should throw a ServerException if the request has an unexpected error',
         () async {
-          when(
-            () => httpClient.get(any()),
-          ).thenThrow(
+          when(() => httpClient.get(any())).thenThrow(
             TimeoutException(''),
           );
 
