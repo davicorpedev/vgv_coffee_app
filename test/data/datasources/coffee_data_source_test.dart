@@ -52,7 +52,7 @@ void main() {
       );
 
       test(
-        'should throw a ServerException when the response fails',
+        'Should throw a ServerException when the response fails',
         () async {
           when(() => client.get(path: any(named: 'path'))).thenThrow(
             ServerException(),

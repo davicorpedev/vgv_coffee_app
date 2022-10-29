@@ -20,9 +20,9 @@ class Result<T> extends Equatable {
         error: failure,
       );
 
-  Result<T> when({
-    required Result<T> Function(T value) success,
-    required Result<T> Function(Failure error) error,
+  R when<R>({
+    required R Function(T value) success,
+    required R Function(Failure failure) error,
   }) {
     if (_value != null) {
       return success(_value!);
