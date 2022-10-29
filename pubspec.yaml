@@ -1,5 +1,5 @@
 name: vgv_coffee_app
-description: A new Flutter project.
+description: Your Very Good Coffee App
 
 publish_to: 'none' 
 
@@ -35,7 +35,6 @@ dev_dependencies:
 
 
 flutter:
-
   uses-material-design: true
 
  
