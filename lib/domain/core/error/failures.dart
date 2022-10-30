@@ -11,6 +11,6 @@ class ServerFailure extends Failure {}
 
 class NetworkFailure extends Failure {}
 
-class InvalidUrlFailure extends Failure {}
+class InvalidImageFailure extends Failure {}
 
 class ImagePermissionsFailure extends Failure {}
