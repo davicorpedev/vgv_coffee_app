@@ -10,3 +10,7 @@ class UnimplementedFailure extends Failure {}
 class ServerFailure extends Failure {}
 
 class NetworkFailure extends Failure {}
+
+class InvalidUrlFailure extends Failure {}
+
+class ImagePermissionsFailure extends Failure {}
