@@ -23,12 +23,9 @@ class LiveApiClient extends ApiClient {
     required String path,
   }) async {
     try {
-      final response = await _client.get(
-        Uri.https(
-          _baseUrl,
-          '/$path',
-        ),
-      );
+      final uri = Uri.https(_baseUrl, '/$path');
+
+      final response = await _client.get(uri);
 
       if (response.statusCode == 200) {
         final decodedResponse = json.decode(response.body);
