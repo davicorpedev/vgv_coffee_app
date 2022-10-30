@@ -3,19 +3,19 @@ import 'package:vgv_coffee_app/domain/core/entities/result.dart';
 import 'package:vgv_coffee_app/domain/core/error/failures.dart';
 import 'package:vgv_coffee_app/domain/core/utils/vgv_image_downloader.dart';
 
-abstract class UrlRepository {
-  Future<Result<String>> downloadUrl(String url);
+abstract class ImageRepository {
+  Future<Result<String>> downloadImage(String url);
 }
 
-class UrlRepositoryImpl extends UrlRepository {
+class ImageRepositoryImpl extends ImageRepository {
   final VGVImageDownloader _imageDownloader;
 
-  UrlRepositoryImpl({
+  ImageRepositoryImpl({
     required VGVImageDownloader imageDownloader,
   }) : _imageDownloader = imageDownloader;
 
   @override
-  Future<Result<String>> downloadUrl(String url) async {
+  Future<Result<String>> downloadImage(String url) async {
     try {
       final imageId = await _imageDownloader.download(url);
 
@@ -25,7 +25,7 @@ class UrlRepositoryImpl extends UrlRepository {
         return Result.success(imageId);
       }
     } on PlatformException {
-      return Result.error(InvalidUrlFailure());
+      return Result.error(InvalidImageFailure());
     }
   }
 }
