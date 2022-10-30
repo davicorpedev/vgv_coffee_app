@@ -17,7 +17,7 @@ void main() {
   });
 
   blocTest<CoffeeCubit, CoffeeState>(
-    'Initial state should be Loading',
+    'Initial state should be CoffeeLoadingState',
     build: () => CoffeeCubit(repository: repository),
     verify: (cubit) {
       expect(cubit.state, CoffeeLoadingState());
@@ -45,7 +45,7 @@ void main() {
       );
 
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should emit [CoffeeLoadedState] if the call is successful',
+        'Should emit [CoffeeLoadedState] if the repository returns success',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
@@ -61,7 +61,7 @@ void main() {
       );
 
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should emit [CoffeeErrorState] if the call fails',
+        'Should emit [CoffeeErrorState] if the repository returns error',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
@@ -97,7 +97,7 @@ void main() {
       );
 
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should emit [CoffeeLoadingState, CoffeeLoadedState] if the call is successful',
+        'Should emit [CoffeeLoadingState, CoffeeLoadedState] if the repository returns success',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
@@ -115,7 +115,7 @@ void main() {
       );
 
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should emit [CoffeeLoadingState, CoffeeErrorState] if the call fails',
+        'Should emit [CoffeeLoadingState, CoffeeErrorState] if the repository returns error',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
