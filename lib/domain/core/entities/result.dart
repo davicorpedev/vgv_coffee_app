@@ -25,7 +25,7 @@ class Result<T> extends Equatable {
     required R Function(Failure failure) error,
   }) {
     if (_value != null) {
-      return success(_value!);
+      return success(_value as T);
     } else if (_error != null) {
       return error(_error!);
     }

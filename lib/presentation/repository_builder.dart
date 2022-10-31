@@ -31,6 +31,9 @@ class RepositoryBuilder extends StatelessWidget {
         RepositoryProvider<ImageRepository>(
           create: (context) => ImageRepositoryImpl(
             imageDownloader: VGVImageDownloader(),
+            networkInfo: NetworkInfo(
+              connectionChecker: InternetConnectionChecker(),
+            ),
           ),
         ),
       ],

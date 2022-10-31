@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
 import 'package:vgv_coffee_app/domain/core/error/failures.dart';
 import 'package:vgv_coffee_app/domain/entities/coffee.dart';
+import 'package:vgv_coffee_app/presentation/core/failure_to_message.dart';
 import 'package:vgv_coffee_app/presentation/pages/widgets/download_image_button.dart';
+import 'package:vgv_coffee_app/presentation/pages/widgets/reload_image_button.dart';
 
 class CoffeeImage extends StatelessWidget {
   const CoffeeImage({super.key});
@@ -33,18 +35,16 @@ class _ImageLoaded extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AspectRatio(
-          aspectRatio: 1,
+        Expanded(
           child: Image.network(coffee.url),
         ),
-        DownloadImageButton(
-          url: coffee.url,
-        ),
-        TextButton(
-          onPressed: () {
-            context.read<CoffeeCubit>().reloadCoffee();
-          },
-          child: Text('reload'),
+        const SizedBox(height: 32),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DownloadImageButton(url: coffee.url),
+            const ReloadImageButton(),
+          ],
         ),
       ],
     );
@@ -56,7 +56,7 @@ class _ImageLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CircularProgressIndicator();
+    return const Center(child: CircularProgressIndicator());
   }
 }
 
@@ -67,6 +67,16 @@ class _ImageFailure extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('failure');
+    return SizedBox(
+      height: 200,
+      child: Text(
+        failure.mapFailureToMessage,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 14,
+          color: Colors.white,
+        ),
+      ),
+    );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_coffee_app/application/download_image/download_image_cubit.dart';
 import 'package:vgv_coffee_app/domain/repositories/image_repository.dart';
+import 'package:vgv_coffee_app/presentation/core/failure_to_message.dart';
 
 class DownloadImageButton extends StatelessWidget {
   final String url;
@@ -19,13 +20,13 @@ class DownloadImageButton extends StatelessWidget {
           if (state is DownloadImageSuccessState) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('Image downloaded'),
+                content: Text('The image has beeen downloaded'),
               ),
             );
           } else if (state is DownloadImageErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Error while downloading the image'),
+              SnackBar(
+                content: Text(state.failure.mapFailureToMessage),
               ),
             );
           }
@@ -35,9 +36,13 @@ class DownloadImageButton extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
-          return IconButton(
-            icon: const Icon(Icons.file_download),
-            tooltip: 'Click here to download this image',
+          return OutlinedButton(
+            child: const Text(
+              'Download Image',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             onPressed: () {
               context.read<DownloadImageCubit>().downloadImage(url);
             },
