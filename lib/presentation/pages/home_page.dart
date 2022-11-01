@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
 import 'package:vgv_coffee_app/domain/repositories/coffee_repository.dart';
+import 'package:vgv_coffee_app/presentation/pages/widgets/app_info.dart';
+import 'package:vgv_coffee_app/presentation/pages/widgets/background_image.dart';
 import 'package:vgv_coffee_app/presentation/pages/widgets/coffee_image.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
     _cubit = CoffeeCubit(
       repository: RepositoryProvider.of<CoffeeRepository>(context),
-    )..getInitialCoffee();
+    );
   }
 
   @override
@@ -34,77 +36,51 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => _cubit,
-      child: Scaffold(
-        body: Stack(
-          children: [
-            const BackgroundImage(),
-            SafeArea(
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  children: const [
-                    SizedBox(height: 32),
-                    AppInfo(),
-                    SizedBox(height: 48),
-                    Expanded(child: CoffeeImage()),
-                    SizedBox(height: 48),
-                  ],
-                ),
+      child: HomePageBody(cubit: _cubit),
+    );
+  }
+}
+
+class HomePageBody extends StatefulWidget {
+  final CoffeeCubit cubit;
+
+  const HomePageBody({super.key, required this.cubit});
+
+  @override
+  State<HomePageBody> createState() => _HomePageBodyState();
+}
+
+class _HomePageBodyState extends State<HomePageBody> {
+  @override
+  void initState() {
+    super.initState();
+
+    widget.cubit.getInitialCoffee();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          const BackgroundImage(),
+          SafeArea(
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: const [
+                  SizedBox(height: 32),
+                  AppInfo(),
+                  SizedBox(height: 48),
+                  Expanded(child: CoffeeImage()),
+                  SizedBox(height: 48),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-    );
-  }
-}
-
-class BackgroundImage extends StatelessWidget {
-  const BackgroundImage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/background.jpeg',
-      height: double.infinity,
-      width: double.infinity,
-      fit: BoxFit.fill,
-      color: Colors.black.withOpacity(0.8),
-      colorBlendMode: BlendMode.hardLight,
-    );
-  }
-}
-
-class AppInfo extends StatelessWidget {
-  const AppInfo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        Text(
-          '☕',
-          style: TextStyle(fontSize: 62),
-        ),
-        Text(
-          'Very Good Coffee App',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 32,
-            color: Colors.white,
-          ),
-        ),
-        SizedBox(height: 32),
-        Text(
-          'Start your day with a lovely coffee~',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.white,
-          ),
-        ),
-      ],
     );
   }
 }

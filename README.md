@@ -1,16 +1,27 @@
-# vgv_coffee_app
+# Very Good Coffee App
 
-A new Flutter project.
+Start your day with a lovely coffee~
 
-## Getting Started
+## How to run
 
-This project is a starting point for a Flutter application.
+The app does not require to add any configuration or files, simply clone the project and execute the App on your simulator or device.
 
-A few resources to get you started if this is your first Flutter project:
+## Architecture
+- Application
+    - Layer responsible for the State Management 
+    - Contains Blocs, Events and States
+    - It is the connection between Business Logic (Repositories) and UI
+- Data
+    - Layer responsible for getting remote data and transforming it
+- Domain
+    - Layer responsible for the Business Logic
+    - It should be independent to the changes on the data source
+- Presentation
+    - Layer responsible for the UI
+    - These Widgets then call Bloc Events and listen for Bloc States
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Testing
+100% Test Coverage
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Info
+Flutter: 3.3.5
