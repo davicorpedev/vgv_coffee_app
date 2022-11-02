@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
 import 'package:vgv_coffee_app/domain/core/error/failures.dart';
 import 'package:vgv_coffee_app/domain/entities/coffee.dart';
-import 'package:vgv_coffee_app/presentation/core/failure_to_message.dart';
+import 'package:vgv_coffee_app/presentation/core/map_failure_to_message.dart';
 import 'package:vgv_coffee_app/presentation/pages/widgets/download_image_button.dart';
 import 'package:vgv_coffee_app/presentation/pages/widgets/reload_image_button.dart';
 
@@ -42,8 +42,12 @@ class _ImageLoaded extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            DownloadImageButton(url: coffee.url),
-            const ReloadImageButton(),
+            Expanded(
+              child: DownloadImageButton(url: coffee.url),
+            ),
+            const Expanded(
+              child: ReloadImageButton(),
+            ),
           ],
         ),
       ],
@@ -67,15 +71,24 @@ class _ImageFailure extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: Text(
-        failure.mapFailureToMessage,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 14,
-          color: Colors.white,
-        ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            failure.mapFailureToMessage,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
+          const SizedBox(height: 16),
+          TextButton.icon(
+            onPressed: () {
+              context.read<CoffeeCubit>().reloadCoffee();
+            },
+            icon: const Icon(Icons.refresh),
+            label: const Text('Try Again'),
+          ),
+        ],
       ),
     );
   }

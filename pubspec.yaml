@@ -31,6 +31,8 @@ dev_dependencies:
     sdk: flutter
   # Mocking and testing
   mocktail: ^0.3.0  
+  network_image_mock: ^2.1.1
+  # Lints
   flutter_lints: ^2.0.0
 
 
@@ -39,5 +41,3 @@ flutter:
 
   assets:
   - assets/background.jpeg
-
- 

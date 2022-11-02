@@ -30,7 +30,7 @@ class Result<T> extends Equatable {
       return error(_error!);
     }
 
-    throw Exception('Unhandled case');
+    throw StateError('Unhandled case');
   }
 
   @override

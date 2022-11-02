@@ -8,12 +8,7 @@ class ReloadImageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      child: const Text(
-        'Reload Image',
-        style: TextStyle(
-          color: Colors.white,
-        ),
-      ),
+      child: const Text('Reload new Image'),
       onPressed: () {
         context.read<CoffeeCubit>().reloadCoffee();
       },
