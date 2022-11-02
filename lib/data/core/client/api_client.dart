@@ -8,7 +8,7 @@ abstract class ApiClient {
   Future<ApiResult> get({required String path});
 }
 
-class LiveApiClient extends ApiClient {
+class LiveApiClient implements ApiClient {
   final http.Client _client;
   final String _baseUrl;
 

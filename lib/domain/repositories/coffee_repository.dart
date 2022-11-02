@@ -11,7 +11,7 @@ abstract class CoffeeRepository {
   Future<Result<Coffee>> getRandomCoffee();
 }
 
-class CoffeeRepositoryImpl extends CoffeeRepository {
+class CoffeeRepositoryImpl implements CoffeeRepository {
   final CoffeeDataSource _dataSource;
   final NetworkInfo _networkInfo;
 

@@ -8,7 +8,7 @@ abstract class ImageRepository {
   Future<Result<String>> downloadImage(String url);
 }
 
-class ImageRepositoryImpl extends ImageRepository {
+class ImageRepositoryImpl implements ImageRepository {
   final VGVImageDownloader _imageDownloader;
   final NetworkInfo _networkInfo;
 

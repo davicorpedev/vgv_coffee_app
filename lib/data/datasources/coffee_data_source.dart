@@ -5,7 +5,7 @@ abstract class CoffeeDataSource {
   Future<CoffeeModel> getRandomCoffee();
 }
 
-class CoffeeDataSourceImpl extends CoffeeDataSource {
+class CoffeeDataSourceImpl implements CoffeeDataSource {
   final ApiClient _client;
 
   CoffeeDataSourceImpl({required ApiClient client}) : _client = client;
