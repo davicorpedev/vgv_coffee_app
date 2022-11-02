@@ -4,24 +4,44 @@ Start your day with a lovely coffee~
 
 ## How to run
 
-The app does not require to add any configuration or files, simply clone the project and execute the App on your simulator or device.
+Flutter Version: 3.3.5
+
+To run the desired project either use the launch configuration in VSCode/Android Studio or use the following commands:
+
+```sh
+$ flutter run
+```
+
+## Testing
+
+To run all unit and widget tests use the following command:
+
+```sh
+$ flutter test
+```
+
+To view the generated coverage report you can use lcov or the VSCode Flutter Coverage Extension.
+
+```sh
+# Run all tests
+$ flutter test --coverage
+# Generate Coverage Report
+$ genhtml coverage/lcov.info -o coverage/
+# Open Coverage Report
+$ open coverage/index.html
+```
 
 ## Architecture
 - Application
-    - Layer responsible for the State Management 
+    - Responsible for State Management 
     - Contains Blocs, Events and States
     - It is the connection between Business Logic (Repositories) and UI
 - Data
-    - Layer responsible for getting remote data and transforming it
+    - Responsible for getting Remote Data and transforming it into Models
 - Domain
-    - Layer responsible for the Business Logic
-    - It should be independent to the changes on the data source
+    - Responsible for the Business Logic
+    - It should be independent to the changes on the Data Source
 - Presentation
-    - Layer responsible for the UI
+    - Responsible for the UI
     - These Widgets then call Bloc Events and listen for Bloc States
 
-## Testing
-100% Test Coverage
-
-## Info
-Flutter: 3.3.5
