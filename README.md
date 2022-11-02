@@ -1,16 +1,47 @@
-# vgv_coffee_app
+# Very Good Coffee App
 
-A new Flutter project.
+Start your day with a lovely coffee~
 
-## Getting Started
+## How to run
 
-This project is a starting point for a Flutter application.
+Flutter Version: 3.3.5
 
-A few resources to get you started if this is your first Flutter project:
+To run the desired project either use the launch configuration in VSCode/Android Studio or use the following commands:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```sh
+$ flutter run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Testing
+
+To run all unit and widget tests use the following command:
+
+```sh
+$ flutter test
+```
+
+To view the generated coverage report you can use lcov or the VSCode Flutter Coverage Extension.
+
+```sh
+# Run all tests
+$ flutter test --coverage
+# Generate Coverage Report
+$ genhtml coverage/lcov.info -o coverage/
+# Open Coverage Report
+$ open coverage/index.html
+```
+
+## Architecture
+- Application
+    - Responsible for State Management 
+    - Contains Blocs, Events and States
+    - It is the connection between Business Logic (Repositories) and UI
+- Data
+    - Responsible for getting Remote Data and transforming it into Models
+- Domain
+    - Responsible for the Business Logic
+    - It should be independent to the changes on the Data Source
+- Presentation
+    - Responsible for the UI
+    - These Widgets then call Bloc Events and listen for Bloc States
+
