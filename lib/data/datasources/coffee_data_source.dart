@@ -1,4 +1,4 @@
-import 'package:vgv_coffee_app/data/core/client/api_client.dart';
+import 'package:vgv_coffee_app/data/client/api_client.dart';
 import 'package:vgv_coffee_app/data/models/coffee_model.dart';
 
 abstract class CoffeeDataSource {

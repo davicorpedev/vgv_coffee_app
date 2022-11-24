@@ -2,8 +2,8 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
-import 'package:vgv_coffee_app/domain/core/entities/result.dart';
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
+import 'package:vgv_coffee_app/domain/entities/result.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
 import 'package:vgv_coffee_app/domain/entities/coffee.dart';
 import 'package:vgv_coffee_app/domain/repositories/coffee_repository.dart';
 

@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:vgv_coffee_app/data/datasources/coffee_data_source.dart';
-import 'package:vgv_coffee_app/data/core/error/exceptions.dart';
-import 'package:vgv_coffee_app/domain/core/entities/result.dart';
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
-import 'package:vgv_coffee_app/domain/core/utils/network_info.dart';
+import 'package:vgv_coffee_app/data/error/exceptions.dart';
+import 'package:vgv_coffee_app/domain/entities/result.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
+import 'package:vgv_coffee_app/domain/utils/network_info.dart';
 import 'package:vgv_coffee_app/domain/entities/coffee.dart';
 
 abstract class CoffeeRepository {

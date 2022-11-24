@@ -2,8 +2,8 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:vgv_coffee_app/application/download_image/download_image_cubit.dart';
-import 'package:vgv_coffee_app/domain/core/entities/result.dart';
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
+import 'package:vgv_coffee_app/domain/entities/result.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
 import 'package:vgv_coffee_app/domain/repositories/image_repository.dart';
 
 class MockImageRepository extends Mock implements ImageRepository {}

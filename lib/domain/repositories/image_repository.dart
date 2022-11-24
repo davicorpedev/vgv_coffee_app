@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
-import 'package:vgv_coffee_app/domain/core/entities/result.dart';
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
-import 'package:vgv_coffee_app/domain/core/utils/network_info.dart';
-import 'package:vgv_coffee_app/domain/core/utils/vgv_image_downloader.dart';
+import 'package:vgv_coffee_app/domain/entities/result.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
+import 'package:vgv_coffee_app/domain/utils/network_info.dart';
+import 'package:vgv_coffee_app/domain/utils/vgv_image_downloader.dart';
 
 abstract class ImageRepository {
   Future<Result<String>> downloadImage(String url);

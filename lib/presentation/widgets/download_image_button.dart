@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_coffee_app/application/download_image/download_image_cubit.dart';
 import 'package:vgv_coffee_app/domain/repositories/image_repository.dart';
-import 'package:vgv_coffee_app/presentation/core/map_failure_to_message.dart';
+import 'package:vgv_coffee_app/presentation/utils/map_failure_to_message.dart';
 
 class DownloadImageButton extends StatelessWidget {
   final String url;

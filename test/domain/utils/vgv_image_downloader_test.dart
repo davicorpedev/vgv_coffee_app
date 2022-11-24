@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_downloader/image_downloader.dart';
-import 'package:vgv_coffee_app/domain/core/utils/vgv_image_downloader.dart';
+import 'package:vgv_coffee_app/domain/utils/vgv_image_downloader.dart';
 
 void main() {
   group(
