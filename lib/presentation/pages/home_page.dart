@@ -23,8 +23,6 @@ class _HomePageState extends State<HomePage> {
     _cubit = CoffeeCubit(
       repository: RepositoryProvider.of<CoffeeRepository>(context),
     );
-
-    _cubit.getInitialCoffee();
   }
 
   @override
