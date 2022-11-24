@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
-import 'package:vgv_coffee_app/presentation/pages/widgets/reload_image_button.dart';
+import 'package:vgv_coffee_app/presentation/widgets/reload_image_button.dart';
 
 import '../mocks/mock_coffe_cubit.dart';
 import '../pump_app.dart';

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
 
 class Result<T> extends Equatable {
   final T? _value;

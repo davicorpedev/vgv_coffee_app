@@ -4,13 +4,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
 import 'package:vgv_coffee_app/domain/entities/coffee.dart';
 import 'package:vgv_coffee_app/domain/repositories/image_repository.dart';
-import 'package:vgv_coffee_app/presentation/core/map_failure_to_message.dart';
+import 'package:vgv_coffee_app/presentation/utils/map_failure_to_message.dart';
 import 'package:vgv_coffee_app/presentation/pages/widgets/coffee_image.dart';
-import 'package:vgv_coffee_app/presentation/pages/widgets/download_image_button.dart';
-import 'package:vgv_coffee_app/presentation/pages/widgets/reload_image_button.dart';
+import 'package:vgv_coffee_app/presentation/widgets/download_image_button.dart';
+import 'package:vgv_coffee_app/presentation/widgets/reload_image_button.dart';
 
 import '../../application/download_image_test.dart';
 import '../mocks/mock_coffe_cubit.dart';

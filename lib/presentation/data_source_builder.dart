@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:vgv_coffee_app/data/core/client/api_client.dart';
+import 'package:vgv_coffee_app/data/client/api_client.dart';
 import 'package:vgv_coffee_app/data/datasources/coffee_data_source.dart';
 
 class DataSourceBuilder extends StatelessWidget {

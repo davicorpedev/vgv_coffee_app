@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:vgv_coffee_app/data/core/client/api_result.dart';
+import 'package:vgv_coffee_app/data/client/api_result.dart';
 
 void main() {
   const tMap = {'test': 'test'};

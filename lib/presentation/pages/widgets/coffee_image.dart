@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
 import 'package:vgv_coffee_app/domain/entities/coffee.dart';
-import 'package:vgv_coffee_app/presentation/core/map_failure_to_message.dart';
-import 'package:vgv_coffee_app/presentation/pages/widgets/download_image_button.dart';
-import 'package:vgv_coffee_app/presentation/pages/widgets/reload_image_button.dart';
+import 'package:vgv_coffee_app/presentation/utils/map_failure_to_message.dart';
+import 'package:vgv_coffee_app/presentation/widgets/download_image_button.dart';
+import 'package:vgv_coffee_app/presentation/widgets/reload_image_button.dart';
 
 class CoffeeImage extends StatelessWidget {
   const CoffeeImage({super.key});
