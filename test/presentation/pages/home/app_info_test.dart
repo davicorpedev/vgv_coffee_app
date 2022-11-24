@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vgv_coffee_app/presentation/pages/widgets/app_info.dart';
 
-import '../pump_app.dart';
+import '../../pump_app.dart';
 
 void main() {
   testWidgets(

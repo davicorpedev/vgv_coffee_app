@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
-import 'package:vgv_coffee_app/presentation/core/map_failure_to_message.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
+import 'package:vgv_coffee_app/presentation/utils/map_failure_to_message.dart';
 
 void main() {
   group(

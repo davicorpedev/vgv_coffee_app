@@ -1,4 +1,4 @@
-import 'package:vgv_coffee_app/domain/core/error/failures.dart';
+import 'package:vgv_coffee_app/domain/error/failures.dart';
 
 const String serverFailureMessage =
     'There has been an error while trying to connect to the server';

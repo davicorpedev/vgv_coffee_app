@@ -1,5 +1,5 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:vgv_coffee_app/domain/core/utils/network_info.dart';
+import 'package:vgv_coffee_app/domain/utils/network_info.dart';
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 

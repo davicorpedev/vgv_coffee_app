@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:vgv_coffee_app/data/core/client/api_result.dart';
-import 'package:vgv_coffee_app/data/core/error/exceptions.dart';
+import 'package:vgv_coffee_app/data/client/api_result.dart';
+import 'package:vgv_coffee_app/data/error/exceptions.dart';
 import 'package:vgv_coffee_app/data/datasources/coffee_data_source.dart';
 import 'package:vgv_coffee_app/data/models/coffee_model.dart';
 
