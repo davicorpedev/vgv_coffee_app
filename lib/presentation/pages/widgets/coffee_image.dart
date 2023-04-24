@@ -78,7 +78,7 @@ class _ImageFailure extends StatelessWidget {
           Text(
             failure.mapFailureToMessage,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 16),
           TextButton.icon(

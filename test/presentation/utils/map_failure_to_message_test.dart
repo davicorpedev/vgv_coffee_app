@@ -61,7 +61,7 @@ void main() {
 
           expect(
             tFailure.mapFailureToMessage,
-            tUnhandledFailure,
+            unhandledFailureMessage,
           );
         },
       );
