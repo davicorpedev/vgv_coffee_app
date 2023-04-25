@@ -9,7 +9,7 @@ void main() {
       const tUrl = 'test.png';
 
       test(
-        'Should build downloader as ImageDownloader.downloadImage if we do not pass any parameter to the constructor',
+        'should build downloader as ImageDownloader.downloadImage if we do not pass any parameter to the constructor',
         () async {
           final imageDownloader = VGVImageDownloaderImpl();
 
@@ -21,7 +21,7 @@ void main() {
       );
 
       test(
-        'Should return String if the downloader returns String',
+        'should return String if the downloader returns String',
         () async {
           const tResult = 'test';
 
@@ -38,7 +38,7 @@ void main() {
       );
 
       test(
-        'Should return null if the downloader returns null',
+        'should return null if the downloader returns null',
         () async {
           const tResult = null;
 

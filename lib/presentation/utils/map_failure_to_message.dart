@@ -8,7 +8,7 @@ const String invalidImageFailureMessage =
     'This image does not contain a valid format';
 const String imagePermissionsFailureMessage =
     'The App requires photo library permissions to download images';
-const String tUnhandledFailure = 'Unhandled Failure';
+const String unhandledFailureMessage = 'Unhandled Failure';
 
 extension Message on Failure {
   String get mapFailureToMessage {
@@ -22,7 +22,7 @@ extension Message on Failure {
       case ImagePermissionsFailure:
         return imagePermissionsFailureMessage;
       default:
-        return tUnhandledFailure;
+        return unhandledFailureMessage;
     }
   }
 }

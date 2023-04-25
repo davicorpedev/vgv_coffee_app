@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import 'package:vgv_coffee_app/data/client/api_client.dart';
 import 'package:vgv_coffee_app/config/config.dart';
-import 'package:vgv_coffee_app/presentation/style/app_themes.dart';
-import 'package:vgv_coffee_app/presentation/data_source_builder.dart';
+import 'package:vgv_coffee_app/data/client/api_client.dart';
 import 'package:vgv_coffee_app/presentation/pages/home_page.dart';
 import 'package:vgv_coffee_app/presentation/repository_builder.dart';
-import 'package:http/http.dart' as http;
+import 'package:vgv_coffee_app/presentation/style/app_themes.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -22,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    _apiClient = LiveApiClient(
+    _apiClient = HttpApiClient(
       client: http.Client(),
       baseUrl: coffeeApiBaseUrl,
     );
@@ -35,11 +34,9 @@ class _MyAppState extends State<MyApp> {
       theme: AppThemes.appTheme,
       home: Provider.value(
         value: _apiClient,
-        child: DataSourceBuilder(
+        child: RepositoryBuilder(
           apiClient: _apiClient,
-          child: const RepositoryBuilder(
-            child: HomePage(),
-          ),
+          child: const HomePage(),
         ),
       ),
     );

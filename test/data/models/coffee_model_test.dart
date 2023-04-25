@@ -9,26 +9,31 @@ import '../../fixtures/fixture_reader.dart';
 void main() {
   const tCoffeeModel = CoffeeModel(url: 'https://test.test/test.png');
 
-  test(
-    'Should be a subclass of Coffee',
-    () {
-      expect(tCoffeeModel, isA<Coffee>());
-    },
-  );
-
   group(
-    'fromJson',
+    'CofeeModel',
     () {
       test(
-        'Should return a valid object',
+        'should be a subclass of Coffee',
         () {
-          final Map<String, dynamic> jsonMap = json.decode(
-            fixture('coffee.json'),
+          expect(tCoffeeModel, isA<Coffee>());
+        },
+      );
+
+      group(
+        'fromJson',
+        () {
+          test(
+            'Should return a valid object',
+            () {
+              final Map<String, dynamic> jsonMap = json.decode(
+                fixture('coffee.json'),
+              );
+
+              final result = CoffeeModel.fromJson(jsonMap);
+
+              expect(result, tCoffeeModel);
+            },
           );
-
-          final result = CoffeeModel.fromJson(jsonMap);
-
-          expect(result, tCoffeeModel);
         },
       );
     },

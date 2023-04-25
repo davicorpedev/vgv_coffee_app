@@ -1,28 +1,26 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:vgv_coffee_app/data/datasources/coffee_data_source.dart';
 import 'package:vgv_coffee_app/data/error/exceptions.dart';
 import 'package:vgv_coffee_app/data/models/coffee_model.dart';
+import 'package:vgv_coffee_app/domain/entities/coffee.dart';
 import 'package:vgv_coffee_app/domain/entities/result.dart';
 import 'package:vgv_coffee_app/domain/error/failures.dart';
-import 'package:vgv_coffee_app/domain/entities/coffee.dart';
 import 'package:vgv_coffee_app/domain/repositories/coffee_repository.dart';
 
+import '../../data/utils/mock_api_client.dart';
 import '../utils/mock_network_info.dart';
 
-class MockCoffeeDataSource extends Mock implements CoffeeDataSource {}
-
 void main() {
-  late MockCoffeeDataSource dataSource;
+  late MockApiClient apiClient;
   late MockNetworkInfo networkInfo;
   late CoffeeRepository repository;
 
   setUp(
     () {
       networkInfo = MockNetworkInfo();
-      dataSource = MockCoffeeDataSource();
+      apiClient = MockApiClient();
       repository = CoffeeRepositoryImpl(
-        dataSource: dataSource,
+        apiClient: apiClient,
         networkInfo: networkInfo,
       );
     },
@@ -35,7 +33,7 @@ void main() {
       const Coffee tCoffee = tCoffeeModel;
 
       group(
-        'Online',
+        'online',
         () {
           setUp(
             () {
@@ -44,9 +42,9 @@ void main() {
           );
 
           test(
-            'Should check if the device has internet connection',
+            'should check if the device has internet connection',
             () async {
-              when((() => dataSource.getRandomCoffee())).thenAnswer(
+              when((() => apiClient.getRandomCoffee())).thenAnswer(
                 (_) async => tCoffeeModel,
               );
 
@@ -57,15 +55,15 @@ void main() {
           );
 
           test(
-            'Should return a valid model when call is successful',
+            'should return a valid model when call is successful',
             () async {
-              when((() => dataSource.getRandomCoffee())).thenAnswer(
+              when((() => apiClient.getRandomCoffee())).thenAnswer(
                 (_) async => tCoffeeModel,
               );
 
               final result = await repository.getRandomCoffee();
 
-              verify(() => dataSource.getRandomCoffee()).called(1);
+              verify(() => apiClient.getRandomCoffee()).called(1);
               expect(
                 result,
                 Result<Coffee>.success(tCoffee),
@@ -74,15 +72,15 @@ void main() {
           );
 
           test(
-            'Should return ServerFailure when the request has failed',
+            'should return ServerFailure when the request has failed',
             () async {
-              when((() => dataSource.getRandomCoffee())).thenThrow(
+              when((() => apiClient.getRandomCoffee())).thenThrow(
                 ServerException(),
               );
 
               final result = await repository.getRandomCoffee();
 
-              verify(() => dataSource.getRandomCoffee()).called(1);
+              verify(() => apiClient.getRandomCoffee()).called(1);
               expect(
                 result,
                 Result<Coffee>.error(ServerFailure()),
@@ -93,7 +91,7 @@ void main() {
       );
 
       group(
-        'Offline',
+        'offline',
         () {
           setUp(
             () {
@@ -102,11 +100,11 @@ void main() {
           );
 
           test(
-            'Should return NetworkFailure when the user has no connection',
+            'should return NetworkFailure when the user has no connection',
             () async {
               final result = await repository.getRandomCoffee();
 
-              verifyNever(() => dataSource.getRandomCoffee());
+              verifyNever(() => apiClient.getRandomCoffee());
               expect(
                 result,
                 Result<Coffee>.error(NetworkFailure()),

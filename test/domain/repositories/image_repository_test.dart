@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:vgv_coffee_app/domain/entities/result.dart';
 import 'package:vgv_coffee_app/domain/error/failures.dart';
-import 'package:vgv_coffee_app/domain/utils/vgv_image_downloader.dart';
 import 'package:vgv_coffee_app/domain/repositories/image_repository.dart';
+import 'package:vgv_coffee_app/domain/utils/vgv_image_downloader.dart';
 
 import '../utils/mock_network_info.dart';
 
@@ -31,7 +31,7 @@ void main() {
       const tUrl = 'test.test.jpg';
 
       group(
-        'Online',
+        'online',
         () {
           setUp(
             () {
@@ -40,7 +40,7 @@ void main() {
           );
 
           test(
-            'Should check if the device has internet connection',
+            'should check if the device has internet connection',
             () async {
               when(() => imageDownloader.download(any())).thenAnswer(
                 (_) async => tImageId,
@@ -116,7 +116,7 @@ void main() {
       );
 
       group(
-        'Offline',
+        'offline',
         () {
           setUp(
             () {
@@ -125,7 +125,7 @@ void main() {
           );
 
           test(
-            'Should return NetworkFailure when the user has no connection',
+            'should return NetworkFailure when the user has no connection',
             () async {
               final result = await repository.downloadImage(tUrl);
 
