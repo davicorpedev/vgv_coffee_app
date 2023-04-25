@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:vgv_coffee_app/data/client/api_result.dart';
 import 'package:vgv_coffee_app/data/error/exceptions.dart';
+import 'package:vgv_coffee_app/data/models/coffee_model.dart';
 
 abstract class ApiClient {
-  Future<ApiResult> getRandomCoffee();
+  Future<CoffeeModel> getRandomCoffee();
 }
 
 class HttpApiClient implements ApiClient {
@@ -19,7 +19,7 @@ class HttpApiClient implements ApiClient {
         _baseUrl = baseUrl;
 
   @override
-  Future<ApiResult> getRandomCoffee() async {
+  Future<CoffeeModel> getRandomCoffee() async {
     try {
       final uri = Uri.https(_baseUrl, '/random.json');
 
@@ -28,7 +28,7 @@ class HttpApiClient implements ApiClient {
       if (response.statusCode == 200) {
         final decodedResponse = json.decode(response.body);
 
-        return ApiResult.from(decodedResponse);
+        return CoffeeModel.fromJson(decodedResponse);
       } else {
         throw ServerException();
       }

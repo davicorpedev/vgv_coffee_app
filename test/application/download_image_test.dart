@@ -30,7 +30,7 @@ void main() {
       const tUrl = 'test.test.jpg';
 
       blocTest(
-        'Should call downloadImage from repository',
+        'should call downloadImage from repository',
         build: () => DownloadImageCubit(repository: repository),
         setUp: () {
           when(() => repository.downloadImage(any())).thenAnswer(
@@ -44,7 +44,7 @@ void main() {
       );
 
       blocTest(
-        'Should emit [DownloadImageLoadingState, DownloadImageSuccessState] if the repository returns success',
+        'should emit [DownloadImageLoadingState, DownloadImageSuccessState] if the repository returns success',
         build: () => DownloadImageCubit(repository: repository),
         setUp: () {
           when(() => repository.downloadImage(any())).thenAnswer(
@@ -61,7 +61,7 @@ void main() {
       );
 
       blocTest(
-        'Should emit [DownloadImageLoadingState, DownloadImageErrorState] if the repository returns error',
+        'should emit [DownloadImageLoadingState, DownloadImageErrorState] if the repository returns error',
         build: () => DownloadImageCubit(repository: repository),
         setUp: () {
           when(() => repository.downloadImage(any())).thenAnswer(

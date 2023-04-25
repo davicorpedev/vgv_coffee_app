@@ -4,57 +4,62 @@ import 'package:vgv_coffee_app/domain/error/failures.dart';
 
 void main() {
   group(
-    'when',
+    'Result',
     () {
-      test(
-        'Should return a success when Result has been initiated as a success',
+      group(
+        'when',
         () {
-          const tString = 'test';
+          test(
+            'should return a success when Result has been initiated as a success',
+            () {
+              const tString = 'test';
 
-          final result = Result<String>.success(tString).when(
-            success: (success) {
-              return success;
-            },
-            error: (failure) {
-              return failure;
+              final result = Result<String>.success(tString).when(
+                success: (success) {
+                  return success;
+                },
+                error: (failure) {
+                  return failure;
+                },
+              );
+
+              expect(result, tString);
             },
           );
 
-          expect(result, tString);
-        },
-      );
+          test(
+            'should return a failure when Result has been initiated as an error',
+            () {
+              final tFailure = ServerFailure();
 
-      test(
-        'Should return a failure when Result has been initiated as an error',
-        () {
-          final tFailure = ServerFailure();
+              final result = Result<String>.error(tFailure).when(
+                success: (success) {
+                  return success;
+                },
+                error: (failure) {
+                  return failure;
+                },
+              );
 
-          final result = Result<String>.error(tFailure).when(
-            success: (success) {
-              return success;
-            },
-            error: (failure) {
-              return failure;
+              expect(result, tFailure);
             },
           );
 
-          expect(result, tFailure);
-        },
-      );
-
-      test(
-        'Should throw an Error if the value is null',
-        () {
-          expect(
-            () => Result<String?>.success(null).when(
-              success: (success) {
-                return success;
-              },
-              error: (failure) {
-                return failure;
-              },
-            ),
-            throwsA(const TypeMatcher<StateError>()),
+          test(
+            'should throw an Error if the value is null',
+            () {
+              expect(
+                () => Result<String?>.success(null).when(
+                  success: (success) {
+                    return success;
+                  },
+                  error: (failure) {
+                    return failure;
+                  },
+                ),
+                throwsA(const TypeMatcher<StateError>()),
+              );
+            },
           );
         },
       );

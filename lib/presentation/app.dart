@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:vgv_coffee_app/config/config.dart';
 import 'package:vgv_coffee_app/data/client/api_client.dart';
-import 'package:vgv_coffee_app/presentation/data_source_builder.dart';
 import 'package:vgv_coffee_app/presentation/pages/home_page.dart';
 import 'package:vgv_coffee_app/presentation/repository_builder.dart';
 import 'package:vgv_coffee_app/presentation/style/app_themes.dart';
@@ -35,11 +34,9 @@ class _MyAppState extends State<MyApp> {
       theme: AppThemes.appTheme,
       home: Provider.value(
         value: _apiClient,
-        child: DataSourceBuilder(
+        child: RepositoryBuilder(
           apiClient: _apiClient,
-          child: const RepositoryBuilder(
-            child: HomePage(),
-          ),
+          child: const HomePage(),
         ),
       ),
     );
