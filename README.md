@@ -4,7 +4,7 @@ Start your day with a lovely coffee~
 
 ## How to run
 
-Flutter Version: 3.3.5
+Flutter Version: 3.7.12
 
 To run the desired project either use the launch configuration in VSCode/Android Studio or use the following commands:
 

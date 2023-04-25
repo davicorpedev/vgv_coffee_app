@@ -2,9 +2,9 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
+import 'package:vgv_coffee_app/domain/entities/coffee.dart';
 import 'package:vgv_coffee_app/domain/entities/result.dart';
 import 'package:vgv_coffee_app/domain/error/failures.dart';
-import 'package:vgv_coffee_app/domain/entities/coffee.dart';
 import 'package:vgv_coffee_app/domain/repositories/coffee_repository.dart';
 
 class MockCoffeeRepository extends Mock implements CoffeeRepository {}
@@ -31,7 +31,7 @@ void main() {
     'getInitialCoffee',
     () {
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should call getRandomCoffee from repository',
+        'should call getRandomCoffee from repository',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
@@ -45,7 +45,7 @@ void main() {
       );
 
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should emit [CoffeeLoadedState] if the repository returns success',
+        'should emit [CoffeeLoadedState] if the repository returns success',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
@@ -61,7 +61,7 @@ void main() {
       );
 
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should emit [CoffeeErrorState] if the repository returns error',
+        'should emit [CoffeeErrorState] if the repository returns error',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
@@ -82,7 +82,7 @@ void main() {
     'reloadCoffee',
     () {
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should call getRandomCoffee from repository',
+        'should call getRandomCoffee from repository',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
@@ -97,7 +97,7 @@ void main() {
       );
 
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should emit [CoffeeLoadingState, CoffeeLoadedState] if the repository returns success',
+        'should emit [CoffeeLoadingState, CoffeeLoadedState] if the repository returns success',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(
@@ -115,7 +115,7 @@ void main() {
       );
 
       blocTest<CoffeeCubit, CoffeeState>(
-        'Should emit [CoffeeLoadingState, CoffeeErrorState] if the repository returns error',
+        'should emit [CoffeeLoadingState, CoffeeErrorState] if the repository returns error',
         build: () => CoffeeCubit(repository: repository),
         setUp: () {
           when(() => repository.getRandomCoffee()).thenAnswer(

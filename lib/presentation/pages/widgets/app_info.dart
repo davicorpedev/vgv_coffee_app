@@ -14,13 +14,13 @@ class AppInfo extends StatelessWidget {
         Text(
           'Very Good Coffee App',
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: 32),
         Text(
           'Start your day with a lovely coffee~',
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.subtitle1,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
       ],
     );
