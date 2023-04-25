@@ -12,7 +12,7 @@ class CoffeeDataSourceImpl implements CoffeeDataSource {
 
   @override
   Future<CoffeeModel> getRandomCoffee() async {
-    final result = await _client.get(path: 'random.json');
+    final result = await _client.getRandomCoffee();
 
     return CoffeeModel.fromJson(result.response);
   }

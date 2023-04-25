@@ -16,13 +16,13 @@ void main() {
   const jsonKey = 'test';
   const jsonValue = 'test';
 
-  late final LiveApiClient apiClient;
+  late final HttpApiClient apiClient;
   late final MockHttpClient httpClient;
 
   setUpAll(() {
     httpClient = MockHttpClient();
 
-    apiClient = LiveApiClient(
+    apiClient = HttpApiClient(
       client: httpClient,
       baseUrl: baseUrl,
     );
@@ -31,7 +31,7 @@ void main() {
   });
 
   group(
-    'get',
+    'getRandomCoffee',
     () {
       test(
         'Should perform a HTTP GET request',
@@ -40,13 +40,9 @@ void main() {
             (_) async => http.Response('{}', 200),
           );
 
-          await apiClient.get(path: path);
+          await apiClient.getRandomCoffee();
 
-          verify(
-            () => httpClient.get(
-              Uri.https(baseUrl, '/$path'),
-            ),
-          ).called(1);
+          verify(() => httpClient.get(Uri.https(baseUrl, '/$path'))).called(1);
         },
       );
 
@@ -57,7 +53,7 @@ void main() {
             (_) async => http.Response('{"$jsonKey": "$jsonValue"}', 200),
           );
 
-          final result = await apiClient.get(path: path);
+          final result = await apiClient.getRandomCoffee();
 
           expect(
             result,
@@ -73,7 +69,7 @@ void main() {
             (_) async => http.Response('{}', 404),
           );
 
-          final call = apiClient.get(path: path);
+          final call = apiClient.getRandomCoffee();
 
           expect(
             () => call,
@@ -89,7 +85,7 @@ void main() {
             TimeoutException(''),
           );
 
-          final call = apiClient.get(path: path);
+          final call = apiClient.getRandomCoffee();
 
           expect(
             () => call,

@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:vgv_coffee_app/data/client/api_result.dart';
-import 'package:vgv_coffee_app/data/error/exceptions.dart';
 import 'package:vgv_coffee_app/data/datasources/coffee_data_source.dart';
+import 'package:vgv_coffee_app/data/error/exceptions.dart';
 import 'package:vgv_coffee_app/data/models/coffee_model.dart';
 
 import '../../fixtures/fixture_reader.dart';
@@ -27,26 +27,26 @@ void main() {
       test(
         'Should perform a get request',
         () async {
-          when(() => client.get(path: any(named: 'path'))).thenAnswer(
+          when(() => client.getRandomCoffee()).thenAnswer(
             (_) async => ApiResult.from(json.decode(fixture('coffee.json'))),
           );
 
           dataSource.getRandomCoffee();
 
-          verify(() => client.get(path: 'random.json')).called(1);
+          verify(() => client.getRandomCoffee()).called(1);
         },
       );
 
       test(
         'Should return a Coffee when the request is successful',
         () async {
-          when(() => client.get(path: any(named: 'path'))).thenAnswer(
+          when(() => client.getRandomCoffee()).thenAnswer(
             (_) async => ApiResult.from(json.decode(fixture('coffee.json'))),
           );
 
           final result = await dataSource.getRandomCoffee();
 
-          verify(() => client.get(path: 'random.json')).called(1);
+          verify(() => client.getRandomCoffee()).called(1);
           expect(result, tCoffeeModel);
         },
       );
@@ -54,7 +54,7 @@ void main() {
       test(
         'Should throw a ServerException when the response fails',
         () async {
-          when(() => client.get(path: any(named: 'path'))).thenThrow(
+          when(() => client.getRandomCoffee()).thenThrow(
             ServerException(),
           );
 

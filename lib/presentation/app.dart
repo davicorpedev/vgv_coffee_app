@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    _apiClient = LiveApiClient(
+    _apiClient = HttpApiClient(
       client: http.Client(),
       baseUrl: coffeeApiBaseUrl,
     );
