@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vgv_coffee_app/application/coffee/coffee_cubit.dart';
 import 'package:vgv_coffee_app/domain/repositories/coffee_repository.dart';
-import 'package:vgv_coffee_app/presentation/pages/widgets/coffee_image.dart';
 import 'package:vgv_coffee_app/presentation/pages/widgets/app_info.dart';
 import 'package:vgv_coffee_app/presentation/pages/widgets/background_image.dart';
+import 'package:vgv_coffee_app/presentation/pages/widgets/coffee_image.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -66,8 +66,8 @@ class _HomePageBodyState extends State<HomePageBody> {
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: const [
+              child: const Column(
+                children: [
                   SizedBox(height: 32),
                   AppInfo(),
                   SizedBox(height: 48),
