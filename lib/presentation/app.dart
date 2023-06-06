@@ -6,6 +6,7 @@ import 'package:vgv_coffee_app/data/client/api_client.dart';
 import 'package:vgv_coffee_app/presentation/pages/home_page.dart';
 import 'package:vgv_coffee_app/presentation/repository_builder.dart';
 import 'package:vgv_coffee_app/presentation/style/app_themes.dart';
+import 'package:vgv_coffee_app/presentation/utils/theme_builder.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -15,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late ApiClient _apiClient;
+  late final ApiClient _apiClient;
 
   @override
   void initState() {
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Very Good Coffee App',
-      theme: AppThemes.appTheme,
+      theme: LightTheme().themeData,
       home: Provider.value(
         value: _apiClient,
         child: RepositoryBuilder(
