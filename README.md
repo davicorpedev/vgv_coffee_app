@@ -40,8 +40,7 @@ $ open coverage/index.html
     - Responsible for getting Remote Data and transforming it into Models
 - Domain
     - Responsible for the Business Logic
-    - It should be independent to the changes on the Data Source
+    - It should be independent to the changes on the Data Layer
 - Presentation
     - Responsible for the UI
-    - These Widgets then call Bloc Events and listen for Bloc States
-
+    - Widgets call Bloc Events and listen Bloc States
