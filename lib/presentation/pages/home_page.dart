@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late CoffeeCubit _cubit;
+  late final CoffeeCubit _cubit;
 
   @override
   void initState() {
